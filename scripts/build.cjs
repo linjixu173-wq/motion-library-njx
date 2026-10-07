@@ -1,0 +1,14 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const {buildSync} = require('esbuild');
+const root = path.resolve(__dirname, '..');
+const out = path.join(root, 'docs');
+fs.mkdirSync(path.join(out, 'assets'), {recursive:true});
+buildSync({entryPoints:[path.join(root,'web/App.tsx')],bundle:true,format:'esm',platform:'browser',target:'es2020',minify:true,outfile:path.join(out,'assets/app.js'),define:{'process.env.NODE_ENV':'"production"'},legalComments:'linked'});
+fs.copyFileSync(path.join(root,'web/index.html'),path.join(out,'index.html'));
+fs.cpSync(path.join(root,'public'),out,{recursive:true});
+fs.writeFileSync(path.join(out,'.nojekyll'),'');
+const files = ['01-大头特效/BigHeadPop.tsx','02-回忆频闪特效/MemoryFlash.tsx','03-图片堆叠放置特效/PhotoStack.tsx'];
+fs.mkdirSync(path.join(out,'code'),{recursive:true});
+for(const file of files) fs.copyFileSync(path.join(root,'effects',file),path.join(out,'code',path.basename(file)+'.txt'));
+console.log('Built interactive preview: docs/');

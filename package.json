@@ -1,0 +1,35 @@
+{
+  "name": "aji-motion-library-njx",
+  "version": "1.0.0",
+  "private": true,
+  "description": "阿基的动态镜头库：可复用 Remotion 组件与在线交互预览",
+  "scripts": {
+    "dev": "node scripts/serve.cjs",
+    "build": "node scripts/build.cjs",
+    "typecheck": "tsc --noEmit",
+    "studio": "remotion studio remotion.tsx",
+    "render:stack": "remotion render remotion.tsx Motion-PhotoStack out/stack.mp4",
+    "render:memory": "remotion render remotion.tsx Motion-MemoryFlash out/memory.mp4",
+    "render:head": "remotion render remotion.tsx Motion-BigHead out/head.mp4 --gl=angle",
+    "package": "node scripts/package.cjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.533",
+    "@remotion/player": "4.0.533",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.533",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3",
+    "esbuild": "0.28.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linjixu173-wq/motion-library-njx.git"
+  },
+  "homepage": "https://linjixu173-wq.github.io/motion-library-njx/"
+}
